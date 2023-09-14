@@ -9,7 +9,7 @@ public class Main extends Application {
 
 	@Override
 	public void start(Stage stage) {
-		stage.setTitle("HolaFX Application");
+		stage.setTitle("Application HolaFX ");
 		stage.show();
 	}
 }
