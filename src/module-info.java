@@ -7,4 +7,5 @@ module HolaFX {
 	requires javafx.graphics;
 	requires javafx.base;
 	opens application to javafx.graphics, javafx.base;
+	opens prueba1 to javafx.graphics, javafx.base;
 }
