@@ -41,6 +41,7 @@ public class ShowAndWaitApp extends Application {
         root.getChildren().addAll(sayHelloButton, openButton);
         Scene scene = new Scene(root, 200, 200);
         stage.setScene(scene);
+        //Coge las coordenadas de la ultima escena, le suma 50 a X e Y para la siguiente ventana y asigna esa escena al atributo ultimaEscena
         stage.setX(this.ultimaEscena.getX() + 50);
         stage.setY(this.ultimaEscena.getY() + 50);
         this.ultimaEscena = stage;
