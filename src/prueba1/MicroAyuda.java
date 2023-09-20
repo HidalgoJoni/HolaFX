@@ -52,7 +52,7 @@ public class MicroAyuda extends Application {
         root.add(ayuda, 4, 3);
         Scene escenaPrincipal = new Scene(root, 300, 100);
         // Añadimos a un "listener" a la escena para saber cuando el usuario cambia y muestra la ayuda
-        escenaPrincipal.focusOwnerProperty().addListener((ObservableValue<? extends Node> value, Node oldNode, Node newNode) -> focusChanged(value, oldNode, newNode));
+        escenaPrincipal.focusOwnerProperty().addListener((ObservableValue<? extends Node> value, Node oldNode, Node newNode) -> cambioDeEnfoque(value, oldNode, newNode));
         escena.setScene(escenaPrincipal);
         escena.setTitle("Enseñando ayuda");
         escena.show();
