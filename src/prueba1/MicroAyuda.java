@@ -58,8 +58,8 @@ public class MicroAyuda extends Application {
         escena.show();
     }
 
-    public void focusChanged(ObservableValue<? extends Node> value, Node oldNode, Node newNode) {
-        // Focus has changed to a new node
+    public void cambioDeEnfoque(ObservableValue<? extends Node> value, Node oldNode, Node newNode) {
+        // nos enfocamos en un nuevo nodo
         String microayuda = (String) newNode.getProperties().get("ayuda");
         if (microayuda != null && microayuda.trim().length() > 0) {
             ayuda.setText(microayuda);
