@@ -34,7 +34,7 @@ public class MicroAyuda extends Application {
         nombre.getProperties().put("ayuda", "Introduce el nombre");
         apellido.getProperties().put("ayuda", "Introduce el apellido");
         sueldo.getProperties().put("ayuda", "Introduce un sueldo mayor a 2000€");
-        // El nodo del oayuda no esta controlado
+        // El nodo de la ayuda no esta controlado
         ayuda.setManaged(false);
         ayuda.setTextOrigin(VPos.TOP);
         ayuda.setFill(Color.RED);
