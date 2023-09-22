@@ -19,6 +19,8 @@ public class WindowEventApp extends Application {
 
     @Override
     public void start(Stage stage) {
+        // Creamos la checkbox para saber si se puede o no cerrar la ventana
+        // Tambien creamos los botones ocultar y cerrar y les asignamos sus funciones
         puedeCerrarVentana = new CheckBox("Puede cerrar la ventana");
         Button btnCerrar = new Button("Cerrar");
         btnCerrar.setOnAction(e -> stage.close());
@@ -34,12 +36,14 @@ public class WindowEventApp extends Application {
         root.setSpacing(20);
         root.getChildren().addAll(puedeCerrarVentana, btnCerrar, btnOcultar);
 
-        // Añadimos los controladores de eventos a la escena y la mostramos
+        // Añadimos los controladores de eventos al escenario
         stage.setOnShowing(e -> handle(e));
         stage.setOnShown(e -> handle(e));
         stage.setOnHiding(e -> handle(e));
         stage.setOnHidden(e -> handle(e));
         stage.setOnCloseRequest(e -> handle(e));
+
+        // Creamos la escena, le ponemos titulo y la mostramos
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.setTitle("Window Events");
