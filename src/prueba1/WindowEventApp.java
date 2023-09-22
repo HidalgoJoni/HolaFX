@@ -21,12 +21,12 @@ public class WindowEventApp extends Application {
     public void start(Stage stage) {
         // Creamos la checkbox para saber si se puede o no cerrar la ventana
         // Tambien creamos los botones ocultar y cerrar y les asignamos sus funciones
-        puedeCerrarVentana = new CheckBox("Puede cerrar la ventana");
+        puedeCerrarVentana = new CheckBox("Puede cerrar la ventana desde la barra de titulo haciendo click en cerrar (la X)");
         Button btnCerrar = new Button("Cerrar");
         btnCerrar.setOnAction(e -> stage.close());
         Button btnOcultar = new Button("Ocultar");
         btnOcultar.setOnAction(e -> {
-            showDialog(stage);
+            PopUp(stage);
             stage.hide();
         });
 
@@ -37,11 +37,11 @@ public class WindowEventApp extends Application {
         root.getChildren().addAll(puedeCerrarVentana, btnCerrar, btnOcultar);
 
         // Añadimos los controladores de eventos al escenario
-        stage.setOnShowing(e -> handle(e));
-        stage.setOnShown(e -> handle(e));
-        stage.setOnHiding(e -> handle(e));
-        stage.setOnHidden(e -> handle(e));
-        stage.setOnCloseRequest(e -> handle(e));
+        stage.setOnShowing(e -> Consumir(e));
+        stage.setOnShown(e -> Consumir(e));
+        stage.setOnHiding(e -> Consumir(e));
+        stage.setOnHidden(e -> Consumir(e));
+        stage.setOnCloseRequest(e -> Consumir(e));
 
         // Creamos la escena, le ponemos titulo y la mostramos
         Scene scene = new Scene(root);
@@ -50,7 +50,11 @@ public class WindowEventApp extends Application {
         stage.show();
     }
 
-    public void handle(WindowEvent e) {
+    /**
+     * Recibe eventos del escenario y en funcion del evento que reciba hace una cosa u otra
+     * @param e El evento que tiene que gestionar
+     */
+    public void Consumir(WindowEvent e) {
         // Consume el evento si la checkbox no esta seleccionada para prevenir que el usuario la cierre
         EventType<WindowEvent> type = e.getEventType();
         if (type == WINDOW_CLOSE_REQUEST && !puedeCerrarVentana.isSelected()) {
@@ -59,8 +63,11 @@ public class WindowEventApp extends Application {
         System.out.println(type + ": Consumido=" + e.isConsumed());
     }
 
-    
-    public void showDialog(Stage mainWindow) {
+    /**
+     * Oculta la ventana principal mientras no se haga click en mostrar 
+     * @param mainWindow Recibe el escenario principal para volver a mostrarlo cuando se hace click en btnCerrar
+     */
+    public void PopUp(Stage mainWindow) {
         Stage popup = new Stage();
         Button btnCerrar = new Button("Haz click para mostrar la ventana principal");
         btnCerrar.setOnAction(e -> {
